@@ -1,6 +1,8 @@
 # PandaBot
 
 ## A bot that paves the way for the panda
+Video how PandaBot works:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J8EeAKuUtFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **The bot works using the pyautogui and win32 libraries**
 >I don't really like pyautogui for its slow speed, but in this case it's not required.
