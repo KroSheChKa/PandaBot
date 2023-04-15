@@ -1,10 +1,12 @@
 # PandaBot
 
-## A bot that paves the way for the panda
+## A game bot that paves the way for the panda
 Video how PandaBot works:
 
 https://user-images.githubusercontent.com/104899233/232223120-c5344b1e-ae10-4995-ab47-65c4b7ee39b0.mp4
-> Full [video](https://www.youtube.com/watch?v=MLeEA3e4K_A&ab_channel=KroSheChKa) in my [YouTube](https://www.youtube.com/@kroshechka)
+
+
+> **Full [video](https://www.youtube.com/watch?v=MLeEA3e4K_A&ab_channel=KroSheChKa) in my [YouTube](https://www.youtube.com/@kroshechka)**
 ----
 **The bot works using the pyautogui and win32 libraries**
 >I don't really like pyautogui for its slow speed, but in this case it's not required.
@@ -40,6 +42,10 @@ seconds = (distance - grow_point) / 618
 ---
 
 ## How to launch
+
+*As I have written in my previous works, the bot is written for a particular environment on the computer, the specific location of the window, the screen resolution, etc.*
+
+> **This game bot will be the easiest to configure.**
 
 To run this bot, you need to download the file PandaBot.py, install python together with IDLE on your computer **(you should run the code via it!)**
 
