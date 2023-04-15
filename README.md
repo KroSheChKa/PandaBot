@@ -2,8 +2,10 @@
 
 ## A bot that paves the way for the panda
 Video how PandaBot works:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/J8EeAKuUtFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+https://user-images.githubusercontent.com/104899233/232223120-c5344b1e-ae10-4995-ab47-65c4b7ee39b0.mp4
+> Full [video](https://www.youtube.com/watch?v=MLeEA3e4K_A&ab_channel=KroSheChKa) in my [YouTube](https://www.youtube.com/@kroshechka)
+----
 **The bot works using the pyautogui and win32 libraries**
 >I don't really like pyautogui for its slow speed, but in this case it's not required.
 >...and this is one of my first projects, so I used that simplified library
