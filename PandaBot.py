@@ -30,40 +30,44 @@ def plank(x):
 
     # Wait for (seconds)
     time.sleep(wait)
-    return
 
 def main():
+    
+    # Set the position of the cursor on the game window
+    win32api.SetCursorPos((960,960))
+    
+    # Press Q to quit
+    while keyboard.is_pressed('q') == False:
 
-    # Taking a screenshot of a line
-    pic = pyautogui.screenshot(region = (720,935,700,1))
+        # Taking a screenshot of a line
+        pic = pyautogui.screenshot(region = (720,935,700,1))
 
-    # Iterating pixels in a line (700 px)
-    for x in range(700):
+        # Iterating pixels in a line (700 px)
+        for x in range(700):
+    
+            # Getting red and green values of a pixel
+            # As we have a line so  ↓ y (height) = 0
+            r,g,_ = pic.getpixel((x,0))
+    
+            # Check if the pixel color and column center color match
+            if r == 253 and g == 10:
+    
+                print(f'Distance: {x} pixels')
+                # Press and wait till the next loop
+                plank(x)
 
-        # Getting red and green values of a pixel
-        # As we have a line so  ↓ y (height) = 0
-        r,g,_ = pic.getpixel((x,0))
+    else:
+        # Width and height of the screen
+        w_screen = win32api.GetSystemMetrics(0)
+        h_screen = win32api.GetSystemMetrics(1)
 
-        # Check if the pixel color and column center color match
-        if r == 253 and g == 10:
-
-            print(f'Distance: {x} pixels')
-
-            # Press and wait till the next loop
-            plank(x)
-
-            return
+        # As we set a limit area for cursor, we have to remove it
+        win32api.ClipCursor((0,0,w_screen,h_screen))
 
 # Entry point
 if __name__ == '__main__':
 
     # Time to prepare
     time.sleep(2)
-
-    # Set the position of the cursor on the game window
-    win32api.SetCursorPos((960,960))
-
-    # Press Q to quit
-    while keyboard.is_pressed('q') == False:
-
-        main()
+    
+    main()
