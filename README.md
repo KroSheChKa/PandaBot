@@ -1,59 +1,66 @@
 # PandaBot
 
 ## A game bot that paves the way for the panda
-Video how PandaBot works:
 
-https://user-images.githubusercontent.com/104899233/232223120-c5344b1e-ae10-4995-ab47-65c4b7ee39b0.mp4
-
-
-> **Full [video](https://www.youtube.com/watch?v=MLeEA3e4K_A&ab_channel=KroSheChKa) in my [YouTube](https://www.youtube.com/@kroshechka)**
-----
-**The bot works using the pyautogui and win32 libraries**
+**The bot works using the `pyautogui` and `win32con/api` libraries**
 >I don't really like pyautogui for its slow speed, but in this case it's not required.
 >...and this is one of my first projects, so I used that simplified library
 
-### [Game](https://vk.com/app8025526)
+Video how PandaBot performs:
 
-The game is built on the principle that you have to "grow" a stick of such length that it falls on the next column.
+https://user-images.githubusercontent.com/104899233/232223120-c5344b1e-ae10-4995-ab47-65c4b7ee39b0.mp4
 
-- For each successful fall **+1 point**, as well as for hitting exactly in the center **+1 bonus point**.
-- Did you understick or overstick? - **game over**
+> **Full [video](https://www.youtube.com/watch?v=MLeEA3e4K_A&ab_channel=KroSheChKa) in my [YouTube](https://www.youtube.com/@kroshechka)**
+----
+
+The game is built on the principle that you have to lengthen a stick so that it falls on the next column.
+
+- For each successful fall `+1 point`, as well as for hitting exactly in the center `+1 bonus point`
+- Did you understick or overstick? - **game over**.
 
 ---
 
 ## The idea
 **The bot works as follows:**
-- Screenshot in the game area
-> There is no need to make a screenshot of the entire game screen, just a line, 1 pixel high at the level of the red dash (center of the column)
+- Screenshot of the game area
+> There is no need to make a screenshot of the entire game screen, just a line, `1 pixel height` at the level of the red dash (center of the column)
 - Determine the distance to the center of a column. (Iterate each pixel in the line, checking if its color values are the color of the center)
 
 - Calculate how much time it would take to press the left button to hit exactly in the center of the column
-> As the stick grows at a constant rate, we can assume that the distance to the column is exactly proportional to the time spent on the "growing" of the stick.
+> As the stick grows at a `constant velocity`, we can assume that the **distance to the column is exactly proportional to the time spent on the "growing" of the stick**.
 
 ```python
 seconds = (distance - grow_point) / 618
 ```
-- Press and wait for the panda to pass the way and return to the starting position
+- Press a button, release and wait for the panda to pass the way and return to the starting position
 
 ...repeat
 
-`In fact, the bot can work for as long as you want!`
+**In fact, the bot can work for as long as you want!**
 
 ---
 
 ## How to launch
 
-*As I have written in my previous works, the bot is written for a particular environment on the computer, the specific location of the window, the screen resolution, etc.*
+### [Game](https://vk.com/app8025526)
+
+*As I have written in my previous works, the bot is written for a particular environment on the computer, the `specific location` of the window, the screen resolution, etc.*
 
 > **This game bot will be the easiest to configure.**
 
-To run this bot, you need to download the file PandaBot.py, install python together with IDLE on your computer **(you should run the code via it!)**
+To run this bot, you need:
+
+- install [python](https://www.python.org/downloads/) together with `IDLE` on your computer **(you should run the code via IDLE!)**
+- pip install
+```python
+pip install -r requirements.txt
+```
 
 **Particular case:** *If you have a monitor 3440x1440, then simply place the window with the game exactly half the screen on the left, set the **window scale 125%** and run it.*
 
 else:
 
-In other cases it is possible to run this code on your computer, **but** you will have to change some values depending on the resolution of your monitor, such as:
+In other cases it is possible to run this code on your computer, **but** you will have to `change some values` depending on the resolution of your monitor, such as:
 
 ```python
 # Here you need to set screenshot region values----------------------v height
@@ -66,7 +73,7 @@ for x in range(width): # line 41
 
 >**Make sure that the width of the screenshot covers the whole game area!**
 
-**REMEMBER** that the cursor must always be on the game area for the bot to work
+**REMEMBER** that the cursor must always be on the game area for the bot to work. Do not touch it!
 ```python
 # X and Y should be in the game area
 win32api.SetCursorPos((x,y)) # line 64
