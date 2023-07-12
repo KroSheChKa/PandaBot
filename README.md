@@ -4,7 +4,7 @@
 
 **The bot works using the `pyautogui` and `win32con/api` libraries**
 >I don't really like pyautogui for its slow speed, but in this case it's not required.
->...and this is one of my first projects, so I used that simplified library
+>...and this is one of my first projects, so I used that simple library
 
 Video how PandaBot performs:
 
@@ -63,16 +63,14 @@ pip install -r requirements.txt
 
 **Particular case:** *If you have a monitor 3440x1440, then simply place the window with the game exactly half the screen on the left, set the **window scale 125%** and run it.*
 
-else:
-
 In other cases it is possible to run this code on your computer, **but** you will have to `change some values` depending on the resolution of your monitor, such as:
 
 ```python
-# Here you need to set screenshot region values----------------------v height
-pic = pyautogui.screenshot(region = (left_indent, top_indent, width, 1)) # line 38
+# You have to change 'left' and 'top' unless you have 3440x1440
+pic = pyautogui.screenshot(region = (left, top, width, 1))
 ...
-# Set in range() a width of the screenshot--------------------^^^^^
-for x in range(width): # line 41
+# Iterate each pixel in width
+for x in range(width):
 ```
 > [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with `screenshot region`.
 
@@ -81,20 +79,15 @@ for x in range(width): # line 41
 **REMEMBER** that the cursor must always be on the game area for the bot to work.
 ```python
 # X and Y should be in the game area
-win32api.SetCursorPos((x,y)) # line 64
+win32api.SetCursorPos((x,y))
 ```
 
 The most difficult part, where you have to calculate or find values by yourself
 ```python
 # 33 - the difference between the beginning of the screenshot and the point of growth of the stick
 # 618 - matched coefficient. Try to play with it
-seconds = (x - 33) / 618 # line 19
-...
-# Take the product of the sides of your monitor and divide that by 31000. Replace 160 with the result
-wait = 0.6 + x / coefficient # line 27
+seconds = (x - 33) / 618
 ```
-$coefficient = (screen.width * screen.height) / 31000$
-
 ----
 
 *Any suggestions? You found a flaw?*
