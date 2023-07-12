@@ -30,7 +30,7 @@ The game is built on the principle that you have to lengthen a stick so that it 
 > As the stick grows at a `constant velocity`, we can assume that the **distance to the column is exactly proportional to the time spent on the "growing" of the stick**.
 
 ```python
-seconds = (distance - grow_point) / 618
+seconds = 0.0694 + (x - 77)/613
 ```
 - Press a button, release and wait for the panda to pass the way and return to the starting position
 
@@ -81,14 +81,6 @@ for x in range(width):
 # X and Y should be in the game area
 win32api.SetCursorPos((x,y))
 ```
-
-The most difficult part, where you have to calculate or find values by yourself
-```python
-# 33 - the difference between the beginning of the screenshot and the point of growth of the stick
-# 618 - matched coefficient. Try to play with it
-seconds = (x - 33) / 618
-```
-----
 
 *Any suggestions? You found a flaw?*
 
