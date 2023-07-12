@@ -17,10 +17,10 @@ def plank(x, coefficient, first_run):
     # For the first run the column is further on 35 px
     if first_run == True:
         x = x + 35
-    
-    # Simple calculation of the time for pressing a button
-    seconds = x / 670
 
+    # Simple calculation of the time for pressing a button
+    seconds = 0.0694 + (x - 77)/613
+    
     print(f'Pressing button for {round(seconds, 3)} sec...')
 
     # Pressing LButton for (seconds)
@@ -43,8 +43,8 @@ def main():
     coeff = w_screen * h_screen / 31000
 
     # You have to change 'left' and 'top' unless you have 3440x1440
-    left, top = 720, 945
-    line_screenshot = (left, top, 650, 1)
+    left, top, width = 720, 945, 650
+    line_screenshot = (left, top, width, 1)
     
     # Set the position of the cursor on the game window
     win32api.SetCursorPos((600,600))
@@ -61,7 +61,7 @@ def main():
         pic = pyautogui.screenshot(region = line_screenshot)
         
         # Iterating pixels in a line (700 px)
-        for x in range(650):
+        for x in range(width):
             
             # Getting red and green values of a pixel
             # As we have a line so  ↓ y (height) = 0
