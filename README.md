@@ -50,9 +50,14 @@ seconds = (distance - grow_point) / 618
 
 To run this bot, you need:
 
-- install [python](https://www.python.org/downloads/) together with `IDLE` on your computer **(you should run the code via IDLE!)**
-- pip install
-```python
+- Install [python](https://www.python.org/downloads/) together with `IDLE` on your computer **(you should run the code via IDLE!)**
+- Clone this project by this command somewhere on your computer:
+> **Make sure you have downloaded [git](https://git-scm.com/downloads)!**
+```
+git clone https://github.com/KroSheChKa/PandaBot.git
+```
+- Open cmd in the created folder or press RButton in folder and click "`Git Bash Here`" and paste that:
+```
 pip install -r requirements.txt
 ```
 
@@ -69,11 +74,11 @@ pic = pyautogui.screenshot(region = (left_indent, top_indent, width, 1)) # line 
 # Set in range() a width of the screenshot--------------------^^^^^
 for x in range(width): # line 41
 ```
-> [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with screenshot region
+> [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with `screenshot region`.
 
->**Make sure that the width of the screenshot covers the whole game area!**
+**Сonvince that the width of the screenshot covers the whole game area!**
 
-**REMEMBER** that the cursor must always be on the game area for the bot to work. Do not touch it!
+**REMEMBER** that the cursor must always be on the game area for the bot to work.
 ```python
 # X and Y should be in the game area
 win32api.SetCursorPos((x,y)) # line 64
@@ -92,6 +97,6 @@ $coefficient = (screen.width * screen.height) / 31000$
 
 ----
 
-*Any suggestions? You found a bug?*
+*Any suggestions? You found a flaw?*
 
 -> Leave a comment
