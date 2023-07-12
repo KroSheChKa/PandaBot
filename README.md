@@ -56,7 +56,7 @@ To run this bot, you need:
 ```
 git clone https://github.com/KroSheChKa/PandaBot.git
 ```
-- Open cmd in the created folder or press RButton in folder and click "`Git Bash Here`" and paste that:
+- Open cmd in the created folder or press RButton in the folder and click "`Git Bash Here`" and paste that:
 ```
 pip install -r requirements.txt
 ```
@@ -72,7 +72,7 @@ pic = pyautogui.screenshot(region = (left, top, width, 1))
 # Iterate each pixel in width
 for x in range(width):
 ```
-> [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with `screenshot region`.
+> [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with `screenshot region`
 
 **Сonvince that the width of the screenshot covers the whole game area!**
 
