@@ -3,7 +3,7 @@ import time
 import keyboard
 import win32api, win32con
 
-# Site: https://vk.com/app8025526, Scale - 125%
+# Game: https://vk.com/app8025526, Scale - 125%
 
 # Function to press LeftButton for a certain time
 def press(sec):
@@ -43,6 +43,7 @@ def main():
     coeff = w_screen * h_screen / 31000
 
     # You have to change 'left' and 'top' unless you have 3440x1440
+    # You also need to check whether the whole range falls within the 'width'
     left, top, width = 720, 945, 650
     line_screenshot = (left, top, width, 1)
     
@@ -57,7 +58,7 @@ def main():
         
         print('=' * 38)
         
-        # Taking a screenshot of a line (you should manage 3 )
+        # Taking a screenshot of a line
         pic = pyautogui.screenshot(region = line_screenshot)
         
         # Iterating pixels in a line (700 px)
