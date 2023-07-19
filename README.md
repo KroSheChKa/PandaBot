@@ -84,4 +84,4 @@ win32api.SetCursorPos((x,y))
 
 *Any suggestions? You found a flaw?*
 
--> Leave a comment
+-> Leave a comment in [Discussions](https://github.com/KroSheChKa/BasketBot/discussions)
