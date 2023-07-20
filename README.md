@@ -81,7 +81,10 @@ if r == 253 and g == 10 and b == 1:
 # X and Y should be in the game area
 win32api.SetCursorPos((x,y))
 ```
-#### To start the bot, press P. The same as to cause a pause. Press Q to end the bot completely.
+
+### To start the bot press P. The same as to cause a pause. Press Q to end the bot completely.
+
+----
 
 *Any suggestions? You found a flaw?*
 
