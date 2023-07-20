@@ -1,9 +1,43 @@
 import pyautogui
 import time
-import keyboard
 import win32api, win32con
+import sys, ctypes
 
 # Game: https://vk.com/app8025526, Scale - 125%
+
+# Press P to pause the bot
+def pause():
+    print(16 * '=','Paused', 16 * '=', sep ="")
+    time.sleep(0.2)
+    while not(is_key_pressed(0x50)):
+        if is_key_pressed(0x51):
+            sys.exit()
+        pass
+    print(16 * '=','Unaused', 15 * '=', sep = "")
+
+
+# Check whether the key is pressed
+def is_key_pressed(key):
+    return ctypes.windll.user32.GetAsyncKeyState(key) & 0x8000 != 0
+
+# New sleep func. that you could stop by pressing the stop key (q = 0x51)
+def sleep_key(sec, key_code = 0x51, pause_key_code = 0x50):
+    start_time = time.time()
+    
+    while True:
+        # ExitKey pressed during the loop? - exit the entire program
+        if is_key_pressed(key_code):
+            sys.exit()
+
+        if is_key_pressed(pause_key_code):
+            pause()
+            return
+        current_time = time.time()
+        elapsed_time = current_time - start_time
+        
+        # If the time has run out, exit the loop
+        if elapsed_time >= sec:
+            return
 
 # Function to press LeftButton for a certain time
 def press(sec):
@@ -19,7 +53,7 @@ def plank(x, coefficient, first_run):
         x = x + 35
 
     # Simple calculation of the time for pressing a button
-    seconds = 0.0694 + (x - 77)/613
+    seconds = 0.0694 + (x - 77) / 613
     
     print(f'Pressing button for {round(seconds, 3)} sec...')
 
@@ -32,7 +66,7 @@ def plank(x, coefficient, first_run):
     print(f'Panda runs and waits for {round(wait, 3)} sec...')
 
     # Wait for (seconds)
-    time.sleep(wait)
+    sleep_key(wait)
 
 def main():
     # Width and height of the screen
@@ -44,7 +78,7 @@ def main():
 
     # You have to change 'left' and 'top' unless you have 3440x1440
     # You also need to check whether the whole range falls within the 'width'
-    left, top, width = 720, 945, 650
+    left, top, width = 720, 938, 650
     line_screenshot = (left, top, width, 1)
     
     # Set the position of the cursor on the game window
@@ -53,10 +87,13 @@ def main():
     # First run flag
     flag = True
 
+    # Try to catch the problem with detection
+    error_count = 0
+
     # Press Q to quit
-    while keyboard.is_pressed('q') == False:
-        
+    while not(is_key_pressed(0x51)):
         print('=' * 38)
+        
         
         # Taking a screenshot of a line
         pic = pyautogui.screenshot(region = line_screenshot)
@@ -69,7 +106,7 @@ def main():
             r,g,b = pic.getpixel((x,0))
             
             # Check if the pixel color and column center color match
-            if r == 238 and g == 50 and b == 34:
+            if r == 253 and g == 10 and b == 1:
     
                 print(f'Distance: {x} pixels')
                 
@@ -78,13 +115,23 @@ def main():
 
                 # First game played
                 flag = False
-                
+                error_count = 0
                 break
+        else:
+            error_count += 1
+            # If you here probably you have problem in line 81 or in 109
+            if error_count == 3:
+                print('CANNOT DETECT THE RED LINE. CHECK COORDINATES.')
+                sys.exit()
 
 # Entry point
 if __name__ == '__main__':
 
-    # Time to prepare
-    time.sleep(2)
-    
+    # Press Q to start
+    while not(is_key_pressed(0x50)):
+        pass
+
+    # Instantly release the button
+    win32api.keybd_event(0x50, 0, win32con.KEYEVENTF_KEYUP, 0)
+
     main()
