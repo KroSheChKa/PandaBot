@@ -13,7 +13,9 @@ def pause():
         if is_key_pressed(0x51):
             sys.exit()
         pass
-    print(16 * '=','Unaused', 15 * '=', sep = "")
+    # Instantly release the button
+    win32api.keybd_event(0x50, 0, win32con.KEYEVENTF_KEYUP, 0)
+    print(15 * '=','Unpaused', 15 * '=', sep = "")
 
 
 # Check whether the key is pressed
@@ -31,7 +33,7 @@ def sleep_key(sec, key_code = 0x51, pause_key_code = 0x50):
 
         if is_key_pressed(pause_key_code):
             pause()
-            return
+
         current_time = time.time()
         elapsed_time = current_time - start_time
         
@@ -54,7 +56,6 @@ def plank(x, coefficient, first_run):
 
     # Simple calculation of the time for pressing a button
     seconds = 0.0694 + (x - 77) / 613
-    
     print(f'Pressing button for {round(seconds, 3)} sec...')
 
     # Pressing LButton for (seconds)
@@ -62,7 +63,6 @@ def plank(x, coefficient, first_run):
 
     # Wait-time till the panda runs and gets back to the starting position
     wait = 0.6 + x / coefficient 
-
     print(f'Panda runs and waits for {round(wait, 3)} sec...')
 
     # Wait for (seconds)
@@ -126,12 +126,9 @@ def main():
 
 # Entry point
 if __name__ == '__main__':
+    print('Press P to start the bot or to cause a pause', 'Press Q to stop the bot completely', sep ="\n")
 
-    # Press Q to start
-    while not(is_key_pressed(0x50)):
-        pass
-
-    # Instantly release the button
-    win32api.keybd_event(0x50, 0, win32con.KEYEVENTF_KEYUP, 0)
+    # Press P to start
+    pause()
 
     main()
