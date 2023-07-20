@@ -46,11 +46,9 @@ seconds = 0.0694 + (x - 77)/613
 
 *As I have written in my previous works, the bot is written for a particular environment on the computer, the `specific location` of the window, the screen resolution, etc.*
 
-> **This game bot will be the easiest to configure.**
-
 To run this bot, you need:
 
-- Install [python](https://www.python.org/downloads/) together with `IDLE` on your computer **(you should run the code via IDLE!)**
+- Install [python 3.X](https://www.python.org/downloads/) (3.10 recommended) together with `IDLE` on your computer **(you should run the code via IDLE!)**
 - Clone this project by this command somewhere on your computer:
 > **Make sure you have downloaded [git](https://git-scm.com/downloads)!**
 ```
@@ -61,26 +59,29 @@ git clone https://github.com/KroSheChKa/PandaBot.git
 pip install -r requirements.txt
 ```
 
-**Particular case:** *If you have a monitor 3440x1440, then simply place the window with the game exactly half the screen on the left, set the **window scale 125%** and run it.*
+**Particular case:** *If you have a monitor 3440x1440, then simply place the window with the game exactly half the screen on the left, set the **window scale 125%** and run it via `Python IDLE`*
 
 In other cases it is possible to run this code on your computer, **but** you will have to `change some values` depending on the resolution of your monitor, such as:
 
 ```python
 # You have to change 'left' and 'top' unless you have 3440x1440
 pic = pyautogui.screenshot(region = (left, top, width, 1))
-...
-# Iterate each pixel in width
-for x in range(width):
 ```
 > [Help](https://pyautogui.readthedocs.io/en/latest/screenshot.html) to deal with `screenshot region`
 
 **Сonvince that the width of the screenshot covers the whole game area!**
+
+```python
+# Also check whether the color of the center of the column matches this data
+if r == 253 and g == 10 and b == 1:
+```
 
 **REMEMBER** that the cursor must always be on the game area for the bot to work.
 ```python
 # X and Y should be in the game area
 win32api.SetCursorPos((x,y))
 ```
+#### To start the bot, press P. The same as to cause a pause. Press Q to end the bot completely.
 
 *Any suggestions? You found a flaw?*
 
